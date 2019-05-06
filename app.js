@@ -19,6 +19,8 @@ app.use(bodyParser.json())
 var appRoutes = require('./routes/app');
 var usuarioRoutes = require('./routes/usuario');
 var loginRoutes = require('./routes/login');
+var loginHospital = require('./routes/hospital');
+var loginMedico = require('./routes/medico');
 
 // Conexión a la BBDD
 mongoose.connection.openUri('mongodb://localhost:27017/hospitalDB', (err, res) => {
@@ -30,6 +32,8 @@ mongoose.connection.openUri('mongodb://localhost:27017/hospitalDB', (err, res) =
 
 //Rutas
 app.use('/login', loginRoutes);
+app.use('/hospital', loginHospital);
+app.use('/medico', loginMedico);
 app.use('/usuario', usuarioRoutes);
 app.use('/', appRoutes);
 

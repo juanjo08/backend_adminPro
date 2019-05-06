@@ -7,7 +7,8 @@ var SEED = require('../config/config').SEED;
 // Inicializar variables
 var app = express();
 
-// Inicializar modelo
+
+// Inicializar modelo USUARIO
 var Usuario = require('../models/usuario');
 
 app.post("/", (req, res) => {
@@ -61,6 +62,5 @@ app.post("/", (req, res) => {
     });
 
 });
-
 
 module.exports = app;
