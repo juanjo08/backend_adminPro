@@ -14,6 +14,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
     // parse application/json
 app.use(bodyParser.json())
 
+// Server Index config
+//var serveIndex = require('serve-index');
+//app.use(express.static(__dirname + '/'))
+//app.use('/uploads', serveIndex(__dirname + '/uploads'));
+
 
 // Importar Routes
 var appRoutes = require('./routes/app');
@@ -21,6 +26,9 @@ var usuarioRoutes = require('./routes/usuario');
 var loginRoutes = require('./routes/login');
 var loginHospital = require('./routes/hospital');
 var loginMedico = require('./routes/medico');
+var busqueda = require('./routes/busqueda');
+var upload = require('./routes/upload');
+var imagenes = require('./routes/imagenes');
 
 // Conexión a la BBDD
 mongoose.connection.openUri('mongodb://localhost:27017/hospitalDB', (err, res) => {
@@ -35,6 +43,9 @@ app.use('/login', loginRoutes);
 app.use('/hospital', loginHospital);
 app.use('/medico', loginMedico);
 app.use('/usuario', usuarioRoutes);
+app.use('/busqueda', busqueda);
+app.use('/upload', upload);
+app.use('/imagenes', imagenes);
 app.use('/', appRoutes);
 
 
